@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Doodle Pad.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>8ABB0DFF1E3214880090852A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8ABB0E131E3214890090852A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8ABB0E1E1E3214890090852A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
