@@ -9,6 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController, UINavigationControllerDelegate,UIImagePickerControllerDelegate {
+    
     @IBOutlet weak var drawView: DrawView!
     
     
@@ -41,21 +42,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate,UIImagePi
     }
     
     
-    // MARK: UIImagePickerControllerDelegate
-    /**
-     * Called when the user finishes picking an image
-     */
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        // get the image picked by user
-        let image: UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage;
-        
-        // draw the picture onto the canvas
-        self.drawView.image = image;
-        
-        // dismiss
-        self.dismiss(animated: true, completion: nil)
-    }
-    
     @IBAction func save(_ sender: Any) {
         // save the screen
         // begin context
@@ -76,6 +62,23 @@ class ViewController: UIViewController, UINavigationControllerDelegate,UIImagePi
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
     
+    
+    // MARK: UIImagePickerControllerDelegate
+    /**
+     * Called when the user finishes picking an image
+     */
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        // get the image picked by user
+        let image: UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage;
+        
+        // draw the picture onto the canvas
+        self.drawView.image = image;
+        
+        
+        // dismiss
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     /**
      * Called when image saving is successful.
      * This method must be implemented.
@@ -83,6 +86,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate,UIImagePi
     func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
         print("Image saved.")
     }
+    
+    
+    // MARK: bottom tools
     
     @IBAction func colorChange(_ sender: UIButton) {
         self.drawView.pathColor = sender.backgroundColor

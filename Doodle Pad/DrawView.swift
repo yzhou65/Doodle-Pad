@@ -10,11 +10,13 @@ import UIKit
 
 class DrawView: UIView {
 
+    // MARK: member variables
     fileprivate var path: DrawPath?
     var pathColor: UIColor?
     var lineWidth: CGFloat?
     var image: UIImage? {
         didSet {
+//            self.paths.add(image as Any)
             self.paths.addObjects(from: [image as Any])
             
             // re-draw
@@ -22,11 +24,12 @@ class DrawView: UIView {
         }
     }
     
+    // MARK: lazy init
     fileprivate lazy var paths: NSMutableArray = {
         return NSMutableArray()
     }()
     
-//    fileprivate lazy var paths: [DrawPath] = {
+
     
     /**
      * Clears all paths
@@ -44,19 +47,14 @@ class DrawView: UIView {
         self.setNeedsDisplay()
     }
     
+    
+    // MARK: init
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setUp()
     }
     
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        setUp()
-//    }
-//    
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
+
     
     /**
      * init
@@ -94,12 +92,24 @@ class DrawView: UIView {
         self.setNeedsDisplay()
     }
     
+    
     override func draw(_ rect: CGRect) {
         for i in 0..<self.paths.count {
             if (self.paths.object(at: i) as AnyObject) is UIImage {
                 // draw an image
                 let image: UIImage = self.paths.object(at: i) as! UIImage
-                image.draw(in: rect)
+                
+                let size = displaySize(with: image);
+        
+                // short image
+                if size.height < UIScreen.main.bounds.height {
+                    // center the image
+                    let y = (self.frame.size.height - size.height) * 0.5
+                    image.draw(in: CGRect(origin: CGPoint.init(x: 0, y: y), size: size))
+                }
+                else {  // long image
+                    image.draw(in: CGRect(origin: CGPoint.zero, size: size))
+                }
             }
             else {
                 // draw a line
@@ -109,4 +119,13 @@ class DrawView: UIView {
         }
     }
 
+    private func displaySize(with image: UIImage) -> CGSize {
+        let scale = image.size.height / image.size.width
+        
+        // calculate the height based on ratio of original width/height
+        let width = UIScreen.main.bounds.width
+        let height = width * scale
+        
+        return CGSize(width: width, height: height)
+    }
 }

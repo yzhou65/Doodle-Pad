@@ -423,6 +423,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = W46FRQ7PW6;
 				INFOPLIST_FILE = "Doodle Pad/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "YZ.Doodle-Pad";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -436,6 +437,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = W46FRQ7PW6;
 				INFOPLIST_FILE = "Doodle Pad/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "YZ.Doodle-Pad";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -516,6 +518,7 @@
 				8ABB0E2A1E3214890090852A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8ABB0E2B1E3214890090852A /* Build configuration list for PBXNativeTarget "Doodle PadTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +527,7 @@
 				8ABB0E2D1E3214890090852A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8ABB0E2E1E3214890090852A /* Build configuration list for PBXNativeTarget "Doodle PadUITests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +536,7 @@
 				8ABB0E301E3214890090852A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
