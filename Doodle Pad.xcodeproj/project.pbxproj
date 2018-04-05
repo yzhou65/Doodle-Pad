@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A0A1A6F2075D2A60096C733 /* ImageAdjustView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0A1A6E2075D2A60096C733 /* ImageAdjustView.swift */; };
 		8ABB0E041E3214880090852A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB0E031E3214880090852A /* AppDelegate.swift */; };
 		8ABB0E061E3214880090852A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB0E051E3214880090852A /* ViewController.swift */; };
 		8ABB0E091E3214880090852A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ABB0E071E3214880090852A /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8A0A1A6E2075D2A60096C733 /* ImageAdjustView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageAdjustView.swift; sourceTree = "<group>"; };
 		8ABB0E001E3214880090852A /* Doodle Pad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Doodle Pad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ABB0E031E3214880090852A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ABB0E051E3214880090852A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -101,14 +103,15 @@
 		8ABB0E021E3214880090852A /* Doodle Pad */ = {
 			isa = PBXGroup;
 			children = (
-				8ABB0E031E3214880090852A /* AppDelegate.swift */,
 				8ABB0E051E3214880090852A /* ViewController.swift */,
-				8ABB0E311E321AAE0090852A /* DrawPath.swift */,
+				8A0A1A6E2075D2A60096C733 /* ImageAdjustView.swift */,
 				8ABB0E321E321AAE0090852A /* DrawView.swift */,
+				8ABB0E311E321AAE0090852A /* DrawPath.swift */,
 				8ABB0E071E3214880090852A /* Main.storyboard */,
 				8ABB0E0A1E3214880090852A /* Assets.xcassets */,
 				8ABB0E0C1E3214880090852A /* LaunchScreen.storyboard */,
 				8ABB0E0F1E3214880090852A /* Info.plist */,
+				8ABB0E031E3214880090852A /* AppDelegate.swift */,
 			);
 			path = "Doodle Pad";
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A0A1A6F2075D2A60096C733 /* ImageAdjustView.swift in Sources */,
 				8ABB0E061E3214880090852A /* ViewController.swift in Sources */,
 				8ABB0E331E321AAE0090852A /* DrawPath.swift in Sources */,
 				8ABB0E341E321AAE0090852A /* DrawView.swift in Sources */,

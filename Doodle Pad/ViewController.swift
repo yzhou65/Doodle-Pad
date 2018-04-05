@@ -9,11 +9,19 @@
 import UIKit
 
 class ViewController: UIViewController, UINavigationControllerDelegate,UIImagePickerControllerDelegate {
-    
+    // MARK: - subviews and fields
     @IBOutlet weak var drawView: DrawView!
+    @IBOutlet weak var hud: UILabel!
+    @IBOutlet weak var blackButton: UIButton!
+    
+    /** last selection of path color */
+    var lastPathColor: UIColor?
+    
+    /** last selected button */
+    var lastColorButton: UIButton?
     
     
-    // MARK: tabbar buttons
+    // MARK: - tabbar buttons
     @IBAction func clear(_ sender: Any) {
         self.drawView.clear()
     }
@@ -22,7 +30,19 @@ class ViewController: UIViewController, UINavigationControllerDelegate,UIImagePi
         self.drawView.undo()
     }
     
-    @IBAction func eraser(_ sender: Any) {
+    @IBAction func eraser(_ sender: UIBarButtonItem) {
+        self.lastColorButton?.isSelected = false
+        
+//        let eraser: UIButton = sender.customView as! UIButton
+//        if !eraser.isHighlighted {
+//            eraser.isHighlighted = true
+//            self.lastPathColor = self.drawView.pathColor
+//            self.drawView.pathColor = UIColor.white
+//        }
+//        else {
+//            eraser.isHighlighted = false
+//            self.drawView.pathColor = self.lastPathColor
+//        }
         self.drawView.pathColor = UIColor.white
     }
     
@@ -63,7 +83,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate,UIImagePi
     }
     
     
-    // MARK: UIImagePickerControllerDelegate
+    // MARK: - UIImagePickerControllerDelegate
     /**
      * Called when the user finishes picking an image
      */
@@ -71,8 +91,17 @@ class ViewController: UIViewController, UINavigationControllerDelegate,UIImagePi
         // get the image picked by user
         let image: UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage;
         
-        // draw the picture onto the canvas
-        self.drawView.image = image;
+        let iv = ImageAdjustView(frame: self.drawView.bounds)
+        
+        // handle the image
+        iv.image = image;
+        
+        iv.handleCompletion = { (newImage: UIImage) in
+            self.drawView.image = newImage
+        }
+        
+        // add imageHandleView to drawView
+        self.drawView.addSubview(iv)
         
         
         // dismiss
@@ -85,29 +114,45 @@ class ViewController: UIViewController, UINavigationControllerDelegate,UIImagePi
      */
     func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
         print("Image saved.")
+        
+        // round corners for hud
+        self.hud.layer.cornerRadius = 10
+        self.hud.layer.masksToBounds = true
+        
+        UIView.animate(withDuration: 2.0, animations: { 
+            self.hud.alpha = 1.0
+        }) { (_) in
+            UIView.animate(withDuration: 2.0, animations: { 
+                self.hud.alpha = 0
+            })
+        }
     }
     
     
-    // MARK: bottom tools
+    // MARK: - bottom tools
     
     @IBAction func colorChange(_ sender: UIButton) {
         self.drawView.pathColor = sender.backgroundColor
+        
+        sender.isSelected = !sender.isSelected
+        if self.lastColorButton != nil {
+            if self.lastColorButton!.isSelected {
+                self.lastColorButton!.isSelected = false
+            }
+        }
+        self.lastColorButton = sender
     }
     
     @IBAction func valueChange(_ sender: UISlider) {
         self.drawView.lineWidth = CGFloat(sender.value)
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        self.blackButton.isSelected = true
+        self.lastColorButton = self.blackButton
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
 }
 
