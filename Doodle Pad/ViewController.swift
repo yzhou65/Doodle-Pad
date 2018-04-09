@@ -123,7 +123,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate,UIImagePi
             self.hud.alpha = 1.0
         }) { (_) in
             UIView.animate(withDuration: 2.0, animations: { 
-                self.hud.alpha = 0
+                self.hud.alpha = 0.001
             })
         }
     }
