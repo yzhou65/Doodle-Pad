@@ -8,6 +8,7 @@
 
 import UIKit
 
+// can put this class into DrawView.swift as an inner class
 class DrawPath: UIBezierPath {
 
     var pathColor: UIColor?
